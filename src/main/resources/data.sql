@@ -50,3 +50,7 @@ INSERT INTO book (id, title, author_id, isbn, publicationYear) VALUES (27,'Theod
 INSERT INTO book (id, title, author_id, isbn, publicationYear) VALUES (28,'The Wright Brothers', 2, '9781476728742', 2015);
 INSERT INTO book (id, title, author_id, isbn, publicationYear) VALUES (29,'Benjamin Franklin: Inventing America', 2, '9780195305062', 2005);
 INSERT INTO book (id, title, author_id, isbn, publicationYear) VALUES (30,'The Last Lion: Winston Spencer Churchill: Visions of Glory, 1874-1932', 8, '9780316547703', 1983);
+
+
+
+INSERT INTO rental(id, book_id, renter_name, rental_date, return_date)VALUES (1, 2, 'shyam', '2024-04-26', '2024-05-20');

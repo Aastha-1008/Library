@@ -1,23 +1,30 @@
+drop table if exists rental;
+drop table if exists book;
+drop table if exists author;
+
+
 CREATE TABLE IF NOT EXISTS author (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
     biography VARCHAR(255)
 );
 
-CREATE TABLE book (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS book (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
-    author_id INT,
-    isbn VARCHAR(255),
+    author_id BIGINT,
+    isbn VARCHAR(255) unique,
     publicationYear BIGINT,
     FOREIGN KEY (author_id) REFERENCES author (id)
 );
 
-CREATE TABLE rental (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    book_id INT,
-    renterName VARCHAR(255),
-    rentalDate DATE,
-    returnDate DATE,
+CREATE TABLE IF NOT EXISTS rental (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    book_id BIGINT,
+    renter_name VARCHAR(255),
+    rental_date DATE,
+    return_date DATE,
+    PRIMARY KEY (id),
     FOREIGN KEY (book_id) REFERENCES book (id)
 );
+

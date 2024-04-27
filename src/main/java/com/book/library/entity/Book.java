@@ -1,11 +1,15 @@
 package com.book.library.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.io.Serializable;
+
 
 @Entity
 @Table(name="book")
@@ -13,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Book {
+public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,12 +25,13 @@ public class Book {
     @Column(name = "title")
     private String title;
 
-    @ManyToOne
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY)
     private Author author;
 
     @Column(name="isbn")
     private String isbn;
 
-    @Column(name = "publicationYear")
+    @Column(name = "publication_year")
     private Long publicationYear;
 }
